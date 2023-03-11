@@ -1,0 +1,30 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+    <div class="features">
+
+
+        <h2>Таблица датчиков</h2>
+        <progress>Загрузка</progress>
+        <details>
+            <summary>Подробнее</summary>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem maiores facere, ex nostrum explicabo iure. Tempore maiores aliquam voluptatum error dolore reiciendis iusto? Quia sapiente vero tenetur quam velit molestias.
+        </details>
+        Полную расшифровку обозначения датчиков можно посмотреть <a href="https://teko-com.ru/useful-info/sistemy-oboznachenija/sistema-induktivnyh-datchikov.html">здесь</a>здесь.
+
+        Для заказа или получения подробной информации о датчике нажмите на его обозначение.
+
+        <p></p>
+        <p></p>
+        <form action = "", method="get">
+            <!-- {% csrf_token %} -->
+            {{ form.as_table }}
+            <button class="btn btn-success" type="submit">Поиск</button>
+        </form>
+
+        {%include 'main/table.html'%}
+        {% comment %} {%include 'main/test.html'%} {% endcomment %}
+    </div>
+
+{% endblock %}

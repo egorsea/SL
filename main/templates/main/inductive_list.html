@@ -1,0 +1,124 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+    <div class="features">
+
+        <h2> Индуктивные датчики </h2>
+
+
+    </div>
+
+    <div class="features">
+        <h4>Основные параметры</h4>
+        <form action = "", method="get">
+            <table class='formfilds'>
+                <thead>
+                    <tr>
+                        <th>{{ form.type.label_tag }}</th>
+                        <th>{{ form.flush.label_tag }}</th>
+                        <th>{{ form.spec.label_tag }}</th>
+                        <th>{{ form.distance.label_tag }}</th>
+                        <th>{{ form.voltage.label_tag }}</th>
+                        <th>{{ form.temperature.label_tag }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>{{ form.type }} </th>
+                        <th>{{ form.flush }}</th>
+                        <th>{{ form.spec }}</th>
+                        <th>{{ form.distance}}</th>
+                        <th>{{ form.voltage}}</th>
+                        <th>{{ form.temperature}}</th>
+                    </tr>
+                </tbody>
+            </table>
+            <table class='formfilds'>
+                <thead>
+                    <tr>
+                        <th>{{ form.housing.label_tag }}</th>
+                        <th>{{ form.size.label_tag }}</th>
+                        <th>{{ form.connection.label_tag }}</th>
+                        <th>{{ form.output_structure.label_tag }}</th>
+                        <th>{{ form.output_type.label_tag }}</th>
+                        <th>{{ form.adjust.label_tag }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>{{ form.housing }} </th>
+                        <th>{{ form.size }}</th>
+                        <th>{{ form.connection }}</th>
+                        <th>{{ form.output_structure }}</th>
+                        <th>{{ form.output_type }}</th>
+                        <th>{{ form.adjust}}</th>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Дополнительные параметры</h4>
+            <details>
+                <summary></summary>
+                <table class='formfilds'>
+                <thead>
+                    <tr>
+                        <th>{{ form.manufacturer.label_tag }}</th>
+                        <th>{{ form.material.label_tag }}</th>
+                        <th>{{ form.IP.label_tag }}</th>
+                        <th>{{ form.indicator.label_tag }}</th>
+                        <th> </th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>{{ form.manufacturer }}</th>
+                        <th>{{ form.material }}</th>
+                        <th>{{ form.IP }}</th>
+                        <th>{{ form.indicator }}</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </tbody>
+            </table>
+        </details>
+            <br>
+            <button class="btn btn-success" type="submit">Применить фильтр</button>
+            Найдёно датчиков: {{page_obj.paginator.count}}
+        </form>
+        <p></p>
+
+    </div>
+
+    <div class = 'sensortable'>
+        <a name="table"></a>
+
+        {%include 'main/table.html'%}
+        <p>Для получения подробной информации о датчике нажмите на его обозначение.</p>
+        <p> * Актуальные цены запрашивайте у менеджеров компании-производителя или их официальных представителей.</p>
+
+    </div>
+
+
+
+    <div class="pagination">
+
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+              <a href="?page=1">&laquo; Первая</a>
+              <a href="?page={{ page_obj.previous_page_number }}">Предыдущая </a>
+            {% endif %}
+
+            <span class="current-page">
+              Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+            </span>
+
+            {% if page_obj.has_next %}
+              <a href="?page={{ page_obj.next_page_number }}">Следующая</a>
+              <a href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
+
+{% endblock %}

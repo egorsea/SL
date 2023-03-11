@@ -1,0 +1,118 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+    <div class="features">
+
+        <h2> Оптические датчики </h2>
+        <p>Раздел в разработке</p>
+{% comment %}  {% endcomment %}
+        {% comment %} <p>Для получения подробной информации о датчике нажмите на его обозначение.</p> {% endcomment %}
+{% comment %}  {% endcomment %}
+    {% comment %} </div> {% endcomment %}
+    {% comment %} <div class="features"> {% endcomment %}
+        {% comment %} <h4>Основные параметры</h4> {% endcomment %}
+        {% comment %} <form action = "", method="get"> {% endcomment %}
+            {% comment %} <table class='formfilds'> {% endcomment %}
+                {% comment %} <thead> {% endcomment %}
+                    {% comment %} <tr> {% endcomment %}
+                        {% comment %} <th>{{ form.type.label_tag }}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.flush.label_tag }}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.spec.label_tag }}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.distance.label_tag }}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.voltage.label_tag }}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.temperature.label_tag }}</th> {% endcomment %}
+                    {% comment %} </tr> {% endcomment %}
+                {% comment %} </thead> {% endcomment %}
+                {% comment %} <tbody> {% endcomment %}
+                    {% comment %} <tr> {% endcomment %}
+                        {% comment %} <th>{{ form.type }} </th> {% endcomment %}
+                        {% comment %} <th>{{ form.flush }}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.spec }}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.distance}}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.voltage}}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.temperature}}</th> {% endcomment %}
+                    {% comment %} </tr> {% endcomment %}
+                {% comment %} </tbody> {% endcomment %}
+            {% comment %} </table> {% endcomment %}
+            {% comment %} <table class='formfilds'> {% endcomment %}
+                {% comment %} <thead> {% endcomment %}
+                    {% comment %} <tr> {% endcomment %}
+                        {% comment %} <th>{{ form.housing.label_tag }}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.size.label_tag }}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.connection.label_tag }}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.output_structure.label_tag }}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.output_type.label_tag }}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.adjust.label_tag }}</th> {% endcomment %}
+                    {% comment %} </tr> {% endcomment %}
+                {% comment %} </thead> {% endcomment %}
+                {% comment %} <tbody> {% endcomment %}
+                    {% comment %} <tr> {% endcomment %}
+                        {% comment %} <th>{{ form.housing }} </th> {% endcomment %}
+                        {% comment %} <th>{{ form.size }}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.connection }}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.output_structure }}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.output_type }}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.adjust}}</th> {% endcomment %}
+                    {% comment %} </tr> {% endcomment %}
+                {% comment %} </tbody> {% endcomment %}
+            {% comment %} </table> {% endcomment %}
+            {% comment %} <details> {% endcomment %}
+                {% comment %} <summary><h4>Дополнительные параметры</h4></summary> {% endcomment %}
+{% comment %}  {% endcomment %}
+                {% comment %} <table class='formfilds'> {% endcomment %}
+                {% comment %} <thead> {% endcomment %}
+                    {% comment %} <tr> {% endcomment %}
+                        {% comment %} <th>{{ form.material.label_tag }}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.IP.label_tag }}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.indicator.label_tag }}</th> {% endcomment %}
+                        {% comment %} <th> </th> {% endcomment %}
+                        {% comment %} <th> </th> {% endcomment %}
+                        {% comment %} <th> </th> {% endcomment %}
+                        {% comment %} <th> </th> {% endcomment %}
+                    {% comment %} </tr> {% endcomment %}
+                {% comment %} </thead> {% endcomment %}
+                {% comment %} <tbody> {% endcomment %}
+                    {% comment %} <tr> {% endcomment %}
+                        {% comment %} <th>{{ form.material }}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.IP }}</th> {% endcomment %}
+                        {% comment %} <th>{{ form.indicator }}</th> {% endcomment %}
+                        {% comment %} <th></th> {% endcomment %}
+                        {% comment %} <th></th> {% endcomment %}
+                        {% comment %} <th></th> {% endcomment %}
+                    {% comment %} </tr> {% endcomment %}
+                {% comment %} </tbody> {% endcomment %}
+            {% comment %} </table> {% endcomment %}
+{% comment %}  {% endcomment %}
+        {% comment %} </details> {% endcomment %}
+{% comment %}  {% endcomment %}
+{% comment %}  {% endcomment %}
+{% comment %}  {% endcomment %}
+            {% comment %} <button class="btn btn-success" type="submit">Применить фильтр</button> {% endcomment %}
+        {% comment %} </form> {% endcomment %}
+        {% comment %} <p></p> {% endcomment %}
+        {% comment %} {%include 'main/table.html'%} {% endcomment %}
+{% comment %}  {% endcomment %}
+{% comment %}  {% endcomment %}
+{% comment %}  {% endcomment %}
+{% comment %}  {% endcomment %}
+    {% comment %} <div class="pagination"> {% endcomment %}
+        {% comment %} <span class="step-links"> {% endcomment %}
+            {% comment %} {% if page_obj.has_previous %} {% endcomment %}
+              {% comment %} <a href="?page=1">&laquo; Первая</a> {% endcomment %}
+              {% comment %} <a href="?page={{ page_obj.previous_page_number }}">Предыдущая </a> {% endcomment %}
+            {% comment %} {% endif %} {% endcomment %}
+{% comment %}  {% endcomment %}
+            {% comment %} <span class="current-page"> {% endcomment %}
+              {% comment %} Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }} {% endcomment %}
+            {% comment %} </span> {% endcomment %}
+{% comment %}  {% endcomment %}
+            {% comment %} {% if page_obj.has_next %} {% endcomment %}
+              {% comment %} <a href="?page={{ page_obj.next_page_number }}">Следующая</a> {% endcomment %}
+              {% comment %} <a href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a> {% endcomment %}
+            {% comment %} {% endif %} {% endcomment %}
+        {% comment %} </span> {% endcomment %}
+    {% comment %} </div> {% endcomment %}
+{% comment %}  {% endcomment %}
+{% comment %}  {% endcomment %}
+{% endblock %}

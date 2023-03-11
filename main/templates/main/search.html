@@ -1,0 +1,44 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+    <div class="features">
+
+
+        <h2>Таблица датчиков</h2>
+        <progress>Загрузка</progress>
+        <details>
+            <summary>Подробнее</summary>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem maiores facere, ex nostrum explicabo iure. Tempore maiores aliquam voluptatum error dolore reiciendis iusto? Quia sapiente vero tenetur quam velit molestias.
+        </details>
+        <p></p>
+        <p></p>
+        <form action = "{% url 'induktivnye-datchiki' %}", method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <!-- <input type="text" placeholder="Название статьи" class="form-control"><br> -->
+            <!-- <input type="text" placeholder="Анонс статьи" class="form-control"><br> -->
+            <!-- <textarea class="form-control", placeholder="Тест статьи"></textarea><br> -->
+            <!-- <input type="date" class="form-control"><br> -->
+            <!-- <input type="time" class="form-control"><br> -->
+            <button class="btn btn-success" type="submit">Добавить статью</button>
+        </form>
+
+
+        <form action=''>
+            <select name = 'sort_field'>
+                <option value = 'sensor_type'>type</option>
+                <option value = 'sensor_price'>price</option>
+                <option value = 'sensor_symbol'>symbol</option>
+
+            </select>
+            <input type="text" name = 'search'>
+            <input type="submit">
+        </form>
+
+        {%include 'main/table.html'%}
+        {% comment %} {%include 'main/test.html'%} {% endcomment %}
+    </div>
+
+
+
+{% endblock %}

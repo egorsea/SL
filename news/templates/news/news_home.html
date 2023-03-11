@@ -1,0 +1,25 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+    <div class="features">
+        <h1>Новости на сайте</h1>
+
+        {% if news %}
+            {% for el in news %}
+                <!-- {% filter upper %} -->
+                    <div class="alert alert-warning">
+                        <h3>{{ el.title }}</h3>
+                        <p>{{ el.anons }}</p>
+                        <a href="{% url 'news_detail' 2 %}" class="btn btn-warning">Читать новость</a>
+                    </div>
+
+                <!-- {% endfilter %} -->
+            {% endfor %}
+        {% else %}
+            <p>Записей нет</p>
+        {% endif %}
+
+        {#Комментарий#}
+    </div>
+
+{% endblock %}
