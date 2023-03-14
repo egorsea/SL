@@ -122,11 +122,16 @@ class InductiveForm(forms.Form):
 
     temperature = forms.MultipleChoiceField(
         widget=forms.SelectMultiple(attrs={'class':"form-control multiselect "}),
-        label='Температурный диапазон', #help_text='Test',
+        label='Температурный диапазон',
         choices=[(field, field) for field in Inductive.objects.order_by('temperature').values_list('temperature', flat=True).distinct()],
         required=False)
 
-    # sort_by = forms.ChoiceField(
-        # choices=(('name', 'name'), ('distance', 'distance'), ('price', 'price'),
-                #  ('-name', '-name'), ('-distance', '-distance'), ('-price', '-price')),
-        # required=False)
+    sort_by = forms.ChoiceField(
+        label='Сортировка',
+        choices=(('name', 'Обозначение (по возрастанию)'),
+                 ('-name', 'Обозначение (по убыванию)'),
+                 ('-distance', 'Расстояние (по убыванию)'),
+                 ('distance', 'Расстояние (по возрастанию)'),
+                 ('price', 'Цена (по возрастанию)'),
+                 ('-price', 'Цена (по убыванию)')),
+        required=False)

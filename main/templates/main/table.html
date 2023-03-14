@@ -3,28 +3,22 @@
     <thead>
         <tr>
             <th></th>
-            <th class="cell-center">Тип датчика</th>
+            <th class="cell-center" width="200">>Тип датчика</th>
             <th class="cell-center" width="300">
-                <a href='?{{current_url_parameters}}&sort_by=name#table', title="Сортировка по возрастанию">
-                <i class="fa-solid fa-arrow-up"></i></a>
+
                 Обозначение
-                <a href='?{{current_url_parameters}}&sort_by=-name#table', title="Сортировка по убыванию">
-                <i class="fa-solid fa-arrow-down"></i></a>
+
             </th>
             <th class="cell-center">Описание</th>
             <th class="cell-center">
-                <a href='{{current_url_parameters}}&?sort_by=distance#table', title="Сортировка по возрастанию">
-                <i class="fa-solid fa-arrow-up"></i></a>
+
                 Номинальное расстояние
-                <a href='?{{current_url_parameters}}&sort_by=-distance#table', title="Сортировка по убыванию">
-                    <i class="fa-solid fa-arrow-down"></i></a>
+
             </th>
             <th class="cell-center">
-                <a href='?{{current_url_parameters}}&sort_by=price#table', title="Сортировка по возрастанию">
-                <i class="fa-solid fa-arrow-up"></i></a>
+
                 Цена *
-                <a href='?{{current_url_parameters}}&sort_by=-price#table', title="Сортировка по убыванию">
-                <i class="fa-solid fa-arrow-down"></i></a>
+
             </th>
         </tr>
     </thead>
@@ -33,9 +27,9 @@
         {% for sensor in object_list %}
             <tr>
                 <td class="cell-center"><img src='{{sensor.url_img}}' alt="Фото датчика" width="80"></td>
-                <td class="cell-middle">{{ sensor.type }}</td>
+                <td class="cell-middle">{{ sensor.type }}<br>({{ sensor.spec }})</td>
                 <td class="cell-middle"><a href="{{sensor.url}}", target="_blank">{{ sensor.manufacturer }} {{ sensor.name }}</a></td>
-                <td class="cell-center">{{ sensor.size }}<br>{{ sensor.voltage }}<br>{{ sensor.output_type }} - {{ sensor.output_structure }}</td>
+                <td class="cell-center">{{ sensor.size }} - {{ sensor.flush }}<br>{{ sensor.voltage }}<br>{{ sensor.output_type }} - {{ sensor.output_structure }}</td>
                 <td class="cell-center">{{ sensor.distance }} мм</td>
                 <td class="cell-center">{{ sensor.price }} р.</td>
                 <!-- <td>{{ sensor.stock }}</td> -->

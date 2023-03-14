@@ -54,8 +54,9 @@ class InductiveView(ListView):
     model = Inductive
 
     def paginate_queryset(self, queryset, page_size):
-        sort_by = self.request.GET.get('sort_by', 'name')
-        queryset = queryset.order_by(sort_by)
+        sort_by = self.form.cleaned_data.get('sort_by', 'name')
+        if sort_by:
+            queryset = queryset.order_by(sort_by)
         return super().paginate_queryset(queryset, page_size)
 
     def dispatch(self, request, *args, **kwargs):
@@ -68,16 +69,19 @@ class InductiveView(ListView):
     def get_queryset(self):
         queryset = Inductive.objects.all()
         for field_name, field in self.form.cleaned_data.items():
+            if field_name == 'sort_by':
+                continue
             if self.form.cleaned_data.get(field_name):
                 queryset = queryset.filter(**{f'{field_name}__in' : field})
                 # values
                 #field__isnull проверка на ноль, заполнить поля другими данными
+
+
         return queryset
 
     def get_context_data(self, **kwargs):
         context = super(InductiveView, self).get_context_data(**kwargs)
         context['form'] = self.form
-        context['current_url_parameters'] = self.request.GET.urlencode()
         return context
 
 

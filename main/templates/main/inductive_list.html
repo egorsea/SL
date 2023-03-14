@@ -83,9 +83,15 @@
             </table>
         </details>
             <br>
+            Сортировать по: {{ form.sort_by }}
+            &nbsp;&nbsp;&nbsp;&nbsp;
             <button class="btn btn-success" type="submit">Применить фильтр</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
             Найдёно датчиков: {{page_obj.paginator.count}}
-        </form>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{% url 'induktivnye-datchiki' %}"><t>Сбросить фильтр</a>
+
         <p></p>
 
     </div>
