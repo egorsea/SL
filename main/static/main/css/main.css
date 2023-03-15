@@ -85,13 +85,17 @@ main .manufacturer-container{
   text-align: center;
   width: 75%;
   font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  flex-flow: row wrap;
 
 }
 main .manufacturer {
   width: 20%;
   height: 200px;
   margin: 20px;
-  display: inline-table;
+  /* display: inline-table; */
   float: top;
   clear: both;
   /* border: 1px solid #ccc; */

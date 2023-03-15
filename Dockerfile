@@ -16,7 +16,9 @@ COPY . .
 
 RUN pip install --upgrade pip
 # Запускает команду pip install для всех библиотек, перечисленных в requirements.txt
-COPY ./requirements.txt .
-RUN pip install -r requirements.txt
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
 
 # CMD ["gunicorn","-b","0.0.0.0:8001","soaqaz.wsgi:application"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
