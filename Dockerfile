@@ -22,10 +22,6 @@ WORKDIR /SL
 # Копирует все файлы из нашего локального проекта в контейнер
 COPY . .
 
-RUN cat get-pip.py | python3
-# RUN pip install --upgrade pip
-# RUN pip3 install --upgrade setuptools
-
 # Запускает команду pip install для всех библиотек, перечисленных в requirements.txt
 COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt
