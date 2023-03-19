@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.http import JsonResponse
+
 from django.core.paginator import Paginator
 
 from django.views.generic.base import View
@@ -9,6 +11,8 @@ from .models import Sensors, Inductive
 from .forms import SearchForm, IndSearchForm, InductiveForm
 # Create your views here.
 from django.db.models import Count
+
+import json
 
 def index(request):
     return render (request, 'main/index.html')
@@ -74,9 +78,6 @@ class InductiveView(ListView):
             if self.form.cleaned_data.get(field_name):
                 queryset = queryset.filter(**{f'{field_name}__in' : field})
                 # values
-                #field__isnull проверка на ноль, заполнить поля другими данными
-
-
         return queryset
 
     def get_context_data(self, **kwargs):
@@ -85,32 +86,20 @@ class InductiveView(ListView):
         return context
 
 
-
-class SensorView(ListView):
-
-    model = Sensors
-    # template = 'main/search.html'
-    def get(self, request):
-        form = SearchForm()
-        sensortable = Sensors.objects.all()
-        return render(request, 'main/search.html', {'form': form, 'sensors_list': sensortable})
-
-
-# Cсортировка выдрать из гет значения sort_field
-    def dispatch(self, request, *args, **kwargs):
-        self.form = SearchForm(request.GET)
-        self.form.is_valid()
-        return super(SensorView, self).dispatch(request, *args, **kwargs)
-
-    def get_queryset(self):
-        queryset = Sensors.objects.all()
-        if self.form.cleaned_data.get('type'):
-            queryset = queryset.filter(sensor_type = self.form.cleaned_data['type'])
-        if self.form.cleaned_data.get('sort_field'):
-            queryset = queryset.order_by(self.form.cleaned_data['sort_field'])
-        # print (queryset)
-        return queryset
-
-    # def get_context_data(self, **kwargs):
-
-        # return super().get_context_data(**kwargs)
+def ajaxFormParameters(request):
+    if request.method == 'POST':
+        prametersObject = json.loads(request.body)
+        queryset = Inductive.objects.all()
+        for field_name, field in prametersObject.items():
+            if field_name == 'sort_by':
+                continue
+            queryset = queryset.filter(**{f'{field_name}__in' : field})
+        response_data = {}
+        response_data['summary'] = queryset.count()
+        form = InductiveForm()
+        for field_name, field in form.fields.items():
+            if field_name == 'sort_by':
+                continue
+            options_list = queryset.values_list(field_name, flat=True).distinct()
+            response_data[field_name] = list(options_list)
+        return JsonResponse(response_data)

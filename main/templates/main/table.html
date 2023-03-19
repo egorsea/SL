@@ -3,7 +3,7 @@
     <thead>
         <tr>
             <th></th>
-            <th class="cell-center" width="200">>Тип датчика</th>
+            <th class="cell-center" width="200">Тип датчика</th>
             <th class="cell-center" width="300">
 
                 Обозначение
@@ -12,7 +12,7 @@
             <th class="cell-center">Описание</th>
             <th class="cell-center">
 
-                Номинальное расстояние
+                Ном. расст.
 
             </th>
             <th class="cell-center">
@@ -26,12 +26,25 @@
     <tbody align="left">
         {% for sensor in object_list %}
             <tr>
-                <td class="cell-center"><img src='{{sensor.url_img}}' alt="Фото датчика" width="80"></td>
-                <td class="cell-middle">{{ sensor.type }}<br>({{ sensor.spec }})</td>
-                <td class="cell-middle"><a href="{{sensor.url}}", target="_blank">{{ sensor.manufacturer }} {{ sensor.name }}</a></td>
+                <td class="cell-center"><img src='{{sensor.url_img}}' alt="Фото датчика"></td>
+                <td class="cell-middle type">{{ sensor.type }}<br>({{ sensor.spec }})</td>
+                <td class="cell-center"><a href="{{sensor.url}}", target="_blank">{{ sensor.manufacturer }} {{ sensor.name }}</a></td>
                 <td class="cell-center">{{ sensor.size }} - {{ sensor.flush }}<br>{{ sensor.voltage }}<br>{{ sensor.output_type }} - {{ sensor.output_structure }}</td>
-                <td class="cell-center">{{ sensor.distance }} мм</td>
-                <td class="cell-center">{{ sensor.price }} р.</td>
+                <td class="cell-center">
+                    {% if sensor.distance > 0 %}
+                        {{ sensor.distance }} мм
+                    {% else %}
+                        Нет данных
+                    {% endif %}
+                </td>
+                <td class="cell-center">
+                    {% if sensor.price == 999999 %}
+                        Нет данных
+                    {% else %}
+                    {{ sensor.price }} р.
+                    {% endif %}
+                </td>
+
                 <!-- <td>{{ sensor.stock }}</td> -->
             </tr>
         {% endfor %}

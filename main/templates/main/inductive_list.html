@@ -1,100 +1,95 @@
 {% extends 'main/layout.html' %}
-
+{%load static%}
 {% block content %}
 
-    <div class="features">
 
-        <h2> Индуктивные датчики </h2>
+    <h2> Индуктивные датчики </h2>
+    <h5>Основные параметры</h5>
 
+    <form action = "", method="get", id='main-form'>
 
-    </div>
+        <div class="form-container">
+                {% comment %} {% csrf_token %} {% endcomment %}
+                <div class='item item_1'>
+                    {{ form.type.label_tag }}
+                    {{ form.type }}
+                </div>
+                <div class='item item_2'>
+                    {{ form.flush.label_tag }}
+                    {{ form.flush }}
+                </div>
+                <div class='item item_3'>
+                    {{ form.spec.label_tag }}
+                    {{ form.spec }}
+                </div>
+                <div class='item item_4'>
+                    {{ form.distance.label_tag }}
+                    {{ form.distance}}
+                </div>
 
-    <div class="features">
-        <h4>Основные параметры</h4>
-        <form action = "", method="get">
-            <table class='formfilds'>
-                <thead>
-                    <tr>
-                        <th>{{ form.type.label_tag }}</th>
-                        <th>{{ form.flush.label_tag }}</th>
-                        <th>{{ form.spec.label_tag }}</th>
-                        <th>{{ form.distance.label_tag }}</th>
-                        <th>{{ form.voltage.label_tag }}</th>
-                        <th>{{ form.temperature.label_tag }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>{{ form.type }} </th>
-                        <th>{{ form.flush }}</th>
-                        <th>{{ form.spec }}</th>
-                        <th>{{ form.distance}}</th>
-                        <th>{{ form.voltage}}</th>
-                        <th>{{ form.temperature}}</th>
-                    </tr>
-                </tbody>
-            </table>
-            <table class='formfilds'>
-                <thead>
-                    <tr>
-                        <th>{{ form.housing.label_tag }}</th>
-                        <th>{{ form.size.label_tag }}</th>
-                        <th>{{ form.connection.label_tag }}</th>
-                        <th>{{ form.output_structure.label_tag }}</th>
-                        <th>{{ form.output_type.label_tag }}</th>
-                        <th>{{ form.adjust.label_tag }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>{{ form.housing }} </th>
-                        <th>{{ form.size }}</th>
-                        <th>{{ form.connection }}</th>
-                        <th>{{ form.output_structure }}</th>
-                        <th>{{ form.output_type }}</th>
-                        <th>{{ form.adjust}}</th>
-                    </tr>
-                </tbody>
-            </table>
-            <h4>Дополнительные параметры</h4>
-            <details>
-                <summary></summary>
-                <table class='formfilds'>
-                <thead>
-                    <tr>
-                        <th>{{ form.manufacturer.label_tag }}</th>
-                        <th>{{ form.material.label_tag }}</th>
-                        <th>{{ form.IP.label_tag }}</th>
-                        <th>{{ form.indicator.label_tag }}</th>
-                        <th> </th>
-                        <th> </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>{{ form.manufacturer }}</th>
-                        <th>{{ form.material }}</th>
-                        <th>{{ form.IP }}</th>
-                        <th>{{ form.indicator }}</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </tbody>
-            </table>
+                <div class='item item_5'>
+                    {{ form.voltage.label_tag }}
+                    {{ form.voltage}}
+                </div>
+                <div class='item item_6'>
+                    {{ form.temperature.label_tag }}
+                    {{ form.temperature}}
+                </div>
+                <div class='item item_7'>
+                    {{ form.housing.label_tag }}
+                    {{ form.housing }}
+                </div>
+                <div class='item item_8'>
+                    {{ form.size.label_tag }}
+                    {{ form.size }}
+                </div>
+                <div class='item item_9'>
+                    {{ form.connection.label_tag }}
+                    {{ form.connection }}
+                </div>
+                <div class='item item_10'>
+                    {{ form.output_structure.label_tag }}
+                    {{ form.output_structure }}
+                </div>
+                <div class='item item_11'>
+                    {{ form.output_type.label_tag }}
+                    {{ form.output_type }}
+                </div>
+                <div class='item item_12'>
+                    {{ form.adjust.label_tag }}
+                    {{ form.adjust}}
+                </div>
+
+        </div>
+
+        <details>
+            <summary class='h5'>Дополнительные параметры</summary>
+            <div class="form-container">
+                <div class='item item_13'>
+                    {{ form.manufacturer.label_tag }}
+                    {{ form.manufacturer }}
+                </div>
+                <div class='item item_14'>
+                    {{ form.material.label_tag }}
+                    {{ form.material }}
+                </div>
+                <div class='item item_15'>
+                    {{ form.IP.label_tag }}
+                    {{ form.IP }}
+                </div>
+                <div class='item item_16'>
+                    {{ form.indicator.label_tag }}
+                    {{ form.indicator }}
+                </div>
+            </div>
         </details>
-            <br>
-            Сортировать по: {{ form.sort_by }}
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="btn btn-success" type="submit">Применить фильтр</button>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            Найдёно датчиков: {{page_obj.paginator.count}}
-
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="{% url 'induktivnye-datchiki' %}"><t>Сбросить фильтр</a>
-
-        <p></p>
-
-    </div>
+        <br>
+        <span class="formFooter"> Сортировать по: </span>
+        <span class="formFooter"> {{ form.sort_by }} &nbsp;&nbsp;&nbsp;&nbsp; </span>
+        <button class="btn btn-success" type="submit">Применить фильтр</button>
+        <span class="formFooter" id="sensor_count">&nbsp;&nbsp;&nbsp;&nbsp; Найдёно датчиков: {{page_obj.paginator.count}} </span>
+        <span class="formFooter"> &nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'induktivnye-datchiki' %}"><t>Сбросить фильтр</a></span>
+    </form>
 
     <div class = 'sensortable'>
         <a name="table"></a>
@@ -108,17 +103,17 @@
 
 
     <div class="pagination">
-
         <span class="step-links">
             {% if page_obj.has_previous %}
               <a href="?page=1#table">&laquo; Первая</a>
               <a href="?page={{ page_obj.previous_page_number }}#table">Предыдущая </a>
             {% endif %}
+        </span>
 
-            <span class="current-page">
+        <span class="current-page">
               Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
-            </span>
-
+        </span>
+        <span class="step-links">
             {% if page_obj.has_next %}
               <a href="?page={{ page_obj.next_page_number }}#table">Следующая</a>
               <a href="?page={{ page_obj.paginator.num_pages }}#table">Последняя &raquo;</a>
@@ -126,5 +121,6 @@
         </span>
     </div>
 
+    <script src="{% static '/main/js/formsscript.js'%}"></script>
 
 {% endblock %}

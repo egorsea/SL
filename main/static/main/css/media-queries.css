@@ -1,0 +1,82 @@
+/* Medium (Desktop) */
+@media all and (max-width: 1200px){
+  /* aside {
+    display: block;
+  } */
+/* Small(Phones and Tablets) */
+@media all and (max-width: 768px){
+  aside {
+    display: none;
+    position: fixed;
+    width: 200px;
+    z-index: 1;
+    padding-top: 80px;
+  }
+  main {
+    z-index: 0;
+  }
+  aside img {
+    display: none;
+  }
+  header {
+    display: block;
+  }
+  main{
+    margin-left: 0%;
+  }
+  main .sensortable{
+	  font-size: 12px;
+  }
+  table img{
+    width: 50px;
+  }
+  table tbody td {
+    padding: 2px 2px;
+    vertical-align: top;
+  }
+
+  input.toogleMenu:checked + label.toogleMenu{
+    background: #800;
+  }
+
+  table td:nth-child(2),
+  table th:nth-child(2) {
+    display: none;
+  }
+
+
+  main .features{
+
+    width: 100%;
+
+    padding-right: 15px;
+  }
+  main .features h5 {
+    font-size: 16px;
+  }
+  main .features h2{
+    font-size: 22px;
+  }
+}
+
+
+/* Very Small(Only Phones) */
+@media all and (max-width: 426px){
+  table td:nth-child(4),
+  table th:nth-child(4) {
+    display: none;
+  }
+  .form-container{
+    /* flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch; */
+  }
+  .item{
+    /* width: 15%; */
+    flex-basis: 350px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .multiselect {
+    font-size: 14px;
+}
