@@ -9,7 +9,7 @@
     <form action = "", method="get", id='main-form'>
 
         <div class="form-container">
-                {% comment %} {% csrf_token %} {% endcomment %}
+                {% csrf_token %}
                 <div class='item item_1'>
                     {{ form.type.label_tag }}
                     {{ form.type }}
