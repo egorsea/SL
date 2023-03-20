@@ -135,6 +135,11 @@ STATICFILES_DIRS = [
 
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "https://sensorlist.ru",
+    "http://sensorlist.ru",
+    ]
+
 CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ORIGIN_WHITELIST = [
