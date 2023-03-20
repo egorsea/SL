@@ -9,6 +9,8 @@ from django.views.generic import ListView
 from .models import Sensors, Inductive
 
 from .forms import SearchForm, IndSearchForm, InductiveForm
+
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 from django.db.models import Count
 
