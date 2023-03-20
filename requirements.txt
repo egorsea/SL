@@ -1,4 +1,4 @@
 Django>=4.0
 django-environ
 gunicorn==20.0.4
-livereload
+django-cors-headers
