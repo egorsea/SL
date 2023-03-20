@@ -85,7 +85,7 @@ class InductiveView(ListView):
         context['form'] = self.form
         return context
 
-
+@csrf_exempt
 def ajaxFormParameters(request):
     if request.method == 'POST':
         prametersObject = json.loads(request.body)
